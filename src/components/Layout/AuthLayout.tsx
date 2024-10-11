@@ -1,6 +1,6 @@
 type IAuthLayoutProps = {
     children: React.ReactNode;
-    bottomText?: string;
+    bottomText?: boolean;
 }
 
 
@@ -38,14 +38,15 @@ const AuthLayout = ({ children, bottomText }: IAuthLayoutProps) => {
         </div>
       </div>
       <div className="bg-[#F8FAFC]  w-full h-full">
-        <div className=" m-[160px] bg-[#fff]">{children}</div>
+        <div className=" mx-[110px] my-[90px] bg-[#fff] shadow-lg border-[1px] border-[#DDE2E4]">
+          {children}
+        </div>
         {bottomText && (
-          <div className="flex gap-2 bg-[#FF8600] absolute bottom-[97px] right-[110px] p-[15px] rounded-[60px]">
+          <div className="flex gap-2 bg-[#FF8600] absolute bottom-[77px] right-[110px] p-[15px] rounded-[60px]">
             <p className="text-[#fff] text-[14px] leading-6">Get Help</p>
             <img src="/question.png" alt="question" />
           </div>
         )}
-       
       </div>
     </div>
   );

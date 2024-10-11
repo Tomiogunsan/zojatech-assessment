@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import { BasePaths } from "./path";
 import RootLayout from "@components/Layout/RootLayout";
-import AuthLayout from "@components/Layout/AuthLayout";
+
 
 
 const BaseRoutes = [
@@ -9,7 +9,7 @@ const BaseRoutes = [
     path: "/*",
     exact: true,
     component: lazy(() => import("modules/authentication/routes/index")),
-    Layout: AuthLayout,
+    Layout: null,
     useAuth: false,
   },
   {

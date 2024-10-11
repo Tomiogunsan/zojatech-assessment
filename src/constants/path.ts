@@ -2,6 +2,7 @@
 
 export const AuthPaths = {
   REGISTER: "register",
+  LOGIN: "login",
 };
 
 export const BasePaths = {

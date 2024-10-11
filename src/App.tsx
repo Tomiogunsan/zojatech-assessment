@@ -16,7 +16,7 @@ function App() {
     createRoutesFromElements(
       <>
         {BaseRoutes.map(({ path, Layout, useAuth, component: Component }) =>
-          useAuth ? (
+         Layout && useAuth ? (
             <Route
               key={path}
               path={path}
@@ -31,9 +31,9 @@ function App() {
               key={path}
               path={path}
               element={
-                <Layout key={path}>
+                
                   <Component />
-                </Layout>
+               
               }
             />
           )

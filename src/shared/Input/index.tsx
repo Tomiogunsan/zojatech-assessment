@@ -10,7 +10,7 @@ const Input = (props: IInputProps) => {
     helperText,
     startAdornmentProps,
     endAdornmentProps,
-
+    asteric,
     className,
     startAdornment,
     endAdornment,
@@ -20,7 +20,19 @@ const Input = (props: IInputProps) => {
   } = props;
   return (
     <div className="w-full max-w-full overflow-hidden flex flex-col py-2">
-      {label && <label className="pb-[3px] text-[#333333]">{label}</label>}
+      {label &&
+        (asteric ? (
+          <div className='flex gap-[4px] items-center'>
+            <label className="pb-[3px] text-[#5B6871] text-[14px] leading-6">
+              {label}
+            </label>
+            <img src="/Info.png" alt="icon" className='w-[16px] h-[16px]' />
+          </div>
+        ) : (
+          <label className="pb-[3px] text-[#5B6871] text-[14px] leading-6">
+            {label}
+          </label>
+        ))}
       {/* {label && asteric ? (
         <div className="flex items-center">
           <label className='text-[13px] leading-5 text-[#333]'>{label}</label>
