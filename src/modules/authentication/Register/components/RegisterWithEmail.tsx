@@ -7,8 +7,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IRegisterQuery } from "@services/interface/DTO/auth";
 import { useRegister } from "hooks/auth/useRegister";
 import CircularProgress from "shared/CircularProgress";
+import { useNavigate } from "react-router-dom";
+import { AuthPaths } from "@constants/path";
 
 const RegisterWithEmail = () => {
+    const navigate = useNavigate()
   const { control, handleSubmit } = useForm<IRegisterQuery>({
     defaultValues: {
       first_name: "",
@@ -23,6 +26,7 @@ const RegisterWithEmail = () => {
 
   const handleRegister = (data: IRegisterQuery) => {
     register(data);
+    navigate(`/${AuthPaths.CONFIRM_EMAIL}`)
   };
 
   return (
@@ -61,7 +65,7 @@ const RegisterWithEmail = () => {
         type="submit"
         className="w-full mt-[10px]"
         onClick={() =>
-          handleSubmit(handleRegister, (err) => console.log(err))()
+          handleSubmit(handleRegister)()
         }
       >
         {registrationIsPending ? <CircularProgress /> : "Create account"}

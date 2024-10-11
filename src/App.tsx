@@ -10,32 +10,27 @@ import PageNotFound from "@modules/authentication/PageNotFound";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import Loader from "shared/Loader";
+import PrivateRoute from "routes/privateRoute";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         {BaseRoutes.map(({ path, Layout, useAuth, component: Component }) =>
-         Layout && useAuth ? (
+          Layout && useAuth ? (
             <Route
               key={path}
               path={path}
               element={
-                <Layout key={path}>
-                  <Component />
-                </Layout>
+                <PrivateRoute>
+                  <Layout key={path}>
+                    <Component />
+                  </Layout>
+                </PrivateRoute>
               }
             />
           ) : (
-            <Route
-              key={path}
-              path={path}
-              element={
-                
-                  <Component />
-               
-              }
-            />
+            <Route key={path} path={path} element={<Component />} />
           )
         )}
 

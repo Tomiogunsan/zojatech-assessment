@@ -3,6 +3,9 @@
 export const AuthPaths = {
   REGISTER: "register",
   LOGIN: "login",
+  CONFIRM_EMAIL: "confirm-email",
+  VERIFY_OTP: 'verify-otp',
+  VERIFIED: 'verified',
 };
 
 export const BasePaths = {

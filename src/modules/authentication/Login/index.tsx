@@ -1,14 +1,33 @@
 import AuthLayout from "@components/Layout/AuthLayout";
-import { AuthPaths } from "@constants/path";
+import { AuthPaths, BasePaths } from "@constants/path";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ILoginQuery } from "@services/interface/DTO/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "shared/Button";
 import ControlledInputPassword from "shared/Button/InputPassword/ControlledInputPassword";
 import ControlledInput from "shared/Input/ControlledInput";
-
+import { loginSchema } from "../validation";
+import { useLogin } from "hooks/auth/useLogin";
 
 const Login = () => {
-  const {control} = useForm()
+  const navigate = useNavigate();
+  const { control, handleSubmit } = useForm<ILoginQuery>({
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    resolver: yupResolver(loginSchema),
+  });
+
+  const { login } = useLogin();
+
+  const handleLogin = (data: ILoginQuery) => {
+    login(data);
+
+    navigate(BasePaths.ADMIN);
+  };
+
   return (
     <AuthLayout bottomText>
       <div className="grid gap-y-4 p-[50px] w-full">
@@ -31,7 +50,11 @@ const Login = () => {
           startAdornment={<img src="/lock_open.png" alt="icon" />}
           control={control}
         />
-        <Button type="submit" className="w-full mt-[10px]">
+        <Button
+          type="submit"
+          className="w-full mt-[10px]"
+          onClick={() => handleSubmit(handleLogin, (err) => console.log(err))()}
+        >
           Login
         </Button>
         <p className="text-[#84919A] text-[13px] leading-5 mt-[10px]">
@@ -48,6 +71,6 @@ const Login = () => {
       </div>
     </AuthLayout>
   );
-}
+};
 
-export default Login
+export default Login;

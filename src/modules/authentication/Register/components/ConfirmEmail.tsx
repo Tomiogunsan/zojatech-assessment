@@ -1,7 +1,10 @@
 import EmailVerificationAndConfirmation from "@components/EmailVerificationAndConfirmation";
 import AuthLayout from "@components/Layout/AuthLayout";
+import { AuthPaths } from "@constants/path";
+import { useNavigate } from "react-router-dom";
 
 const ConfirmEmail = () => {
+    const navigate = useNavigate()
   return (
     <AuthLayout>
       <EmailVerificationAndConfirmation
@@ -9,7 +12,7 @@ const ConfirmEmail = () => {
         description="We’ve sent an email to seyi@zojatech.com with a an OTP to confirm your
           account. Check your inbox to activate your account."
         image="/sent-email.png"
-        onClick={() => {}}
+        onClick={() => navigate(`/${AuthPaths.VERIFY_OTP}`)}
         bottomText={
           <p>
             Didn’t get the mail?{" "}
