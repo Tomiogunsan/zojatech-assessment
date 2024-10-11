@@ -1,35 +1,29 @@
 // import { joinPath } from "helpers/navigation";
 
 export const AuthPaths = {
-  SIGNIN: "signin",
   REGISTER: "register",
 };
 
 export const BasePaths = {
-  USER: "/user",
+  ADMIN: "/admin",
 };
 
-export const UsersPath = {
-  TEAM: "team",
-  PROJECT: "project",
+export const AdminPath = {
+  ANALYTICS: "analytics",
+  MESSAGES: "messages",
+  MYGROUP: 'my-group',
+  MYPORTFOLIO: 'my-portfolio',
+  PACK: 'pack',
+  SETTINGS: 'settings',
 };
 
-export const AuthPagePath = {
-  signin: (appendRedirectUrl: boolean = false) =>
-    `/${AuthPaths.SIGNIN}${
-      appendRedirectUrl
-        ? `?redirect_url=${encodeURIComponent(window.location.pathname)}`
-        : ""
-    }`,
-};
-
-// export const TeamPagePath = {
-//   id: (teamId: string, fullPath: boolean = true) =>
-//     joinPath(
-//       `${fullPath ? `/${BasePaths.USER}/` : ""}${UsersPath.TEAM}`,
-//       teamId
-//     ),
+// export const AuthPagePath = {
+//   signin: (appendRedirectUrl: boolean = false) =>
+//     `/${AuthPaths.SIGNIN}${
+//       appendRedirectUrl
+//         ? `?redirect_url=${encodeURIComponent(window.location.pathname)}`
+//         : ""
+//     }`,
 // };
-export const TeamPagePath = {
-  id: (teamId: string) => `${BasePaths.USER}/${UsersPath.TEAM}/${teamId}`,
-};
+
+
