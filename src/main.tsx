@@ -5,6 +5,7 @@ import "./index.css";
 import { StyledEngineProvider } from "@mui/material";
 import ErrorBoundary from "shared/ErrorBoundaryFallback/index.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "input-token/styles.css";
 
  const queryClient = new QueryClient({
    defaultOptions: {

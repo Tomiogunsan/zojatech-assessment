@@ -38,7 +38,7 @@ const AuthLayout = ({ children, bottomText }: IAuthLayoutProps) => {
         </div>
       </div>
       <div className="bg-[#F8FAFC]  w-full h-full">
-        <div className=" mx-[110px] my-[90px] bg-[#fff] shadow-lg border-[1px] border-[#DDE2E4]">
+        <div className=" mx-[110px] my-[90px] bg-[#fff] shadow-lg border-[1px] border-[#DDE2E4] ">
           {children}
         </div>
         {bottomText && (
