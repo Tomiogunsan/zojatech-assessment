@@ -1,5 +1,6 @@
 
 import SideNav from "@components/AppNav/SideNav";
+import Header from "@components/Header";
 import { ReactNode } from "react";
 
 type Props = {
@@ -12,7 +13,8 @@ const RootLayout = ({ children }: Props) => {
       <aside className="h-screen sticky  top-0">
         <SideNav />
       </aside>
-      <main className="bg-white h-screen grid auto-rows-max-auto overflow-auto px-8">
+      <main className="bg-white h-screen grid grid-rows-[80px_1fr] auto-rows-max-auto overflow-auto ">
+        <Header />
         {children}
       </main>
     </section>
