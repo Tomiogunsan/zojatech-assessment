@@ -1,12 +1,13 @@
 export type IRegisterResponse = {
-  success: boolean;
-  message: string;
   data: {
-    token: string;
-    opt: string;
+    success: boolean;
+    message: string;
+    data: {
+      token: string;
+      opt: string;
+    };
   };
 };
-
 
 export type ILoginResponse = {
   success: boolean;
@@ -23,4 +24,16 @@ export type ILoginResponse = {
     };
     token: string;
   };
+};
+
+export type IResendTokenResponse = {
+  success: boolean;
+  message: string;
+  data: { opt: number };
+};
+
+export type IVerifyTokenResponse = {
+  success: boolean;
+  message: "OTP verified successfully";
+  data: [];
 };

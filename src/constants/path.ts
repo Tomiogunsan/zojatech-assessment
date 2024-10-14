@@ -21,13 +21,13 @@ export const AdminPath = {
   SETTINGS: 'settings',
 };
 
-// export const AuthPagePath = {
-//   signin: (appendRedirectUrl: boolean = false) =>
-//     `/${AuthPaths.SIGNIN}${
-//       appendRedirectUrl
-//         ? `?redirect_url=${encodeURIComponent(window.location.pathname)}`
-//         : ""
-//     }`,
-// };
+export const AuthPagePath = {
+  signin: (appendRedirectUrl: boolean = false) =>
+    `/${AuthPaths.LOGIN}${
+      appendRedirectUrl
+        ? `?redirect_url=${encodeURIComponent(window.location.pathname)}`
+        : ""
+    }`,
+};
 
 

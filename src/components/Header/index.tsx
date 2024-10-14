@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-import { IoIosSearch } from "react-icons/io";
+import Search from "shared/Search";
+
 
 const Header = () => {
   const location = useLocation();
@@ -18,16 +19,7 @@ const Header = () => {
         </h3>
       </div>
       <div className="flex gap-4 ">
-        <div className="flex items-center  gap-4 bg-white p-2 rounded-[16px] w-[422px]">
-          <button className="cursor-pointer text-[#aaa6a6]">
-            <IoIosSearch />
-          </button>
-          <input
-            type="text"
-            placeholder="Search"
-            className="bg-transparent outline-none"
-          />
-        </div>
+        <Search placeholderText="Search" className="w-[422px]" />
         <div className="w-[48px] h-[48px]">
           <img src="/plus.png" alt="icon" />
         </div>

@@ -26,6 +26,7 @@ const RegisterWithEmail = () => {
 
   const handleRegister = (data: IRegisterQuery) => {
     register(data);
+    localStorage.setItem("email", data.email)
     navigate(`/${AuthPaths.CONFIRM_EMAIL}`)
   };
 
