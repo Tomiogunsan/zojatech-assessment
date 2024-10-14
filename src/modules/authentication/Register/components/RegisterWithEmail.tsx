@@ -7,11 +7,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { IRegisterQuery } from "@services/interface/DTO/auth";
 import { useRegister } from "hooks/auth/useRegister";
 import CircularProgress from "shared/CircularProgress";
-import { useNavigate } from "react-router-dom";
-import { AuthPaths } from "@constants/path";
 
 const RegisterWithEmail = () => {
-    const navigate = useNavigate()
   const { control, handleSubmit, watch } = useForm<IRegisterQuery>({
     defaultValues: {
       first_name: "",
@@ -24,17 +21,17 @@ const RegisterWithEmail = () => {
 
   const { register, registrationIsPending } = useRegister();
 
-   const email = watch("email");
-   const password = watch("password");
-   const firstname = watch("first_name");
-   const lastname = watch("last_name");
+  const email = watch("email");
+  const password = watch("password");
+  const firstname = watch("first_name");
+  const lastname = watch("last_name");
 
-    const isFormValid = email?.trim() && password?.trim() && firstname?.trim() && lastname?.trim()
+  const isFormValid =
+    email?.trim() && password?.trim() && firstname?.trim() && lastname?.trim();
 
   const handleRegister = (data: IRegisterQuery) => {
     register(data);
-    localStorage.setItem("email", data.email)
-    navigate(`/${AuthPaths.CONFIRM_EMAIL}`)
+    localStorage.setItem("email", data.email);
   };
 
   return (
@@ -73,9 +70,7 @@ const RegisterWithEmail = () => {
         type="submit"
         className="w-full mt-[10px]"
         disabled={!isFormValid}
-        onClick={() =>
-          handleSubmit(handleRegister)()
-        }
+        onClick={() => handleSubmit(handleRegister)()}
       >
         {registrationIsPending ? <CircularProgress /> : "Create account"}
       </Button>
