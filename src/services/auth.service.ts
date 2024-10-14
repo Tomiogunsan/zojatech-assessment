@@ -11,8 +11,9 @@ export const verifyOtp = (data: {otp: string}) => {
   return api.post<IVerifyTokenResponse>(VERIFY_OTP, data);
 };
 
-export const login = (data: ILoginQuery) => {
-  return api.post<ILoginResponse>(LOGIN, data);
+export const login = async (data: ILoginQuery) => {
+  const res = await api.post<ILoginResponse>(LOGIN, data);
+  return res.data
 };
 
 

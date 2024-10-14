@@ -16,16 +16,16 @@ const VerifyOTP = () => {
 
   const handleOTP = async () => {
     const payload = { otp: value };
-    console.log(payload);
-    const res = await verifyOtp(payload);
-    console.log(res);
+
+    await verifyOtp(payload);
+
     navigate(`/${AuthPaths.VERIFIED}`);
   };
 
   const handleResendOTP = async () => {
     const payload = { email: email };
-    const res = await resendOtp(payload);
-    console.log(res);
+    await resendOtp(payload);
+ 
   };
   return (
     <AuthLayout>

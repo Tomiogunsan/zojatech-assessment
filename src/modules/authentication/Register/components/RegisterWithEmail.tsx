@@ -12,7 +12,7 @@ import { AuthPaths } from "@constants/path";
 
 const RegisterWithEmail = () => {
     const navigate = useNavigate()
-  const { control, handleSubmit } = useForm<IRegisterQuery>({
+  const { control, handleSubmit, watch } = useForm<IRegisterQuery>({
     defaultValues: {
       first_name: "",
       last_name: "",
@@ -23,6 +23,13 @@ const RegisterWithEmail = () => {
   });
 
   const { register, registrationIsPending } = useRegister();
+
+   const email = watch("email");
+   const password = watch("password");
+   const firstname = watch("first_name");
+   const lastname = watch("last_name");
+
+    const isFormValid = email?.trim() && password?.trim() && firstname?.trim() && lastname?.trim()
 
   const handleRegister = (data: IRegisterQuery) => {
     register(data);
@@ -65,6 +72,7 @@ const RegisterWithEmail = () => {
       <Button
         type="submit"
         className="w-full mt-[10px]"
+        disabled={!isFormValid}
         onClick={() =>
           handleSubmit(handleRegister)()
         }

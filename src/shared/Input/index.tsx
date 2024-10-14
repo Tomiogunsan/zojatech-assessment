@@ -15,39 +15,33 @@ const Input = (props: IInputProps) => {
     startAdornment,
     endAdornment,
     maxlength,
-    // inputRef,
+  
     ...rest
   } = props;
   return (
     <div className="w-full max-w-full overflow-hidden flex flex-col py-2">
       {label &&
         (asteric ? (
-          <div className='flex gap-[4px] items-center'>
+          <div className="flex gap-[4px] items-center">
             <label className="pb-[3px] text-[#5B6871] text-[14px] leading-6">
               {label}
             </label>
-            <img src="/Info.png" alt="icon" className='w-[16px] h-[16px]' />
+            <img src="/Info.png" alt="icon" className="w-[16px] h-[16px]" />
           </div>
         ) : (
           <label className="pb-[3px] text-[#5B6871] text-[14px] leading-6">
             {label}
           </label>
         ))}
-      {/* {label && asteric ? (
-        <div className="flex items-center">
-          <label className='text-[13px] leading-5 text-[#333]'>{label}</label>
-          <img src={Asteric} alt='asteric' className="ml-[4px]" />
-        </div>
-      ) : (
-        <label className="pb-[3px] text-[#333333]">{label}</label>
-      )} */}
+     
       <OutlinedInput
         {...rest}
         classes={{
           input: twMerge(
-            "w-full text-[12px] rounded-[8px] border-[0.2px] border-[#E6E6E6]",
+            "w-full text-[12px] rounded-[8px] border-[0.2px] border-[#E6E6E6]  ",
             className
           ),
+         
         }}
         startAdornment={
           startAdornment ? (
@@ -64,11 +58,7 @@ const Input = (props: IInputProps) => {
           ) : null
         }
         inputProps={{ maxlength: maxlength }}
-        // inputRef={input => {
-        //   if (ref) {
-        //     ref(input);
-        //   }
-        // }}
+       
       />
       <FieldHelperText error={props.error} helperText={helperText} />
     </div>

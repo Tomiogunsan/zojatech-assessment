@@ -34,6 +34,6 @@ export type IResendTokenResponse = {
 
 export type IVerifyTokenResponse = {
   success: boolean;
-  message: "OTP verified successfully";
+  message: string;
   data: [];
 };

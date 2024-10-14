@@ -17,10 +17,7 @@ const ControlledInput = <TFieldValue extends FieldValues>(
           error={(fieldState.error?.message || '').length > 0}
           helperText={fieldState.error?.message}
           onKeyDown={onKeyDown}
-          // ref={ref => {
-          //   field.ref(ref);
-
-          // }}
+          
         />
       )}
     />

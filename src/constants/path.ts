@@ -1,4 +1,4 @@
-// import { joinPath } from "helpers/navigation";
+
 
 export const AuthPaths = {
   REGISTER: "register",

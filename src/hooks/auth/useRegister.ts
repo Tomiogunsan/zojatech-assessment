@@ -10,7 +10,7 @@ export const useRegister = () => {
 
     onSuccess: (data: IRegisterResponse) => {
       setToken(data.data.data.token);
-      toastAlert.success("Registration successful");
+      
     },
     onError: () => {
       toastAlert.error("Something went wrong");

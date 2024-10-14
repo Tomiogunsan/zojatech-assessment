@@ -6,10 +6,10 @@ export const useLogin = () => {
   const { mutateAsync, isPending } = useMutation({
     mutationFn: login,
     onSuccess: () => {
-        toastAlert.success("Login successful");
+      toastAlert.success("Login successful");
     },
     onError: () => {
-        toastAlert.error('Something went wrong')
+      toastAlert.error("Something went wrong");
     },
   });
   return {

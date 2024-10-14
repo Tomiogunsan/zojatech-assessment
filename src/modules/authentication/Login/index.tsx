@@ -1,5 +1,5 @@
 import AuthLayout from "@components/Layout/AuthLayout";
-import { AuthPaths, BasePaths } from "@constants/path";
+import { AdminPath, AuthPaths, BasePaths } from "@constants/path";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILoginQuery } from "@services/interface/DTO/auth";
 import { useForm } from "react-hook-form";
@@ -9,10 +9,11 @@ import ControlledInputPassword from "shared/Button/InputPassword/ControlledInput
 import ControlledInput from "shared/Input/ControlledInput";
 import { loginSchema } from "../validation";
 import { useLogin } from "hooks/auth/useLogin";
+import { setToken } from "helpers/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { control, handleSubmit } = useForm<ILoginQuery>({
+  const { control, handleSubmit, watch } = useForm<ILoginQuery>({
     defaultValues: {
       email: "",
       password: "",
@@ -21,11 +22,19 @@ const Login = () => {
   });
 
   const { login } = useLogin();
+  const email = watch("email");
+  const password = watch("password");
 
-  const handleLogin = (data: ILoginQuery) => {
-    login(data);
+  const isFormValid = email?.trim() && password?.trim();
 
-    navigate(BasePaths.ADMIN);
+  const handleLogin = async (data: ILoginQuery) => {
+    const res = await login(data);
+
+    setToken(res?.data?.token);
+
+    navigate(`${BasePaths.ADMIN}/${AdminPath.MYPORTFOLIO}`, {
+      replace: true,
+    });
   };
 
   return (
@@ -53,7 +62,8 @@ const Login = () => {
         <Button
           type="submit"
           className="w-full mt-[10px]"
-          onClick={() => handleSubmit(handleLogin, (err) => console.log(err))()}
+          onClick={() => handleSubmit(handleLogin)()}
+          disabled={!isFormValid}
         >
           Login
         </Button>
