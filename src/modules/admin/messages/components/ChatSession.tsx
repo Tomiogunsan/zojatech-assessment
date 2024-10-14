@@ -41,7 +41,7 @@ const ChatSession = ({ message, setMessage }: Props) => {
   };
 
   return (
-    <div className="p-[40px] flex flex-col justify-between h-screen font-[Inter]">
+    <div className="px-[40px] flex flex-col justify-between h-screen font-[Inter]">
       <div>
         <div className="flex justify-between py-4">
           <div className="flex gap-[4px] items-center">

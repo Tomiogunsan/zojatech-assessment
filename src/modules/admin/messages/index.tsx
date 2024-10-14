@@ -40,10 +40,10 @@ const Messages = () => {
     <div className=" px-8  bg-[#f6f6f6] ">
       <div className="grid grid-cols-3 gap-4 p-[32px] rounded-[12px] bg-[#fff]">
         <div className="bg-[#f6f6f6] rounded-[12px] p-[16px]">
-          <SideBar message={message}/>
+          <SideBar message={message} />
         </div>
-        <div className="col-span-2">
-          <ChatSession message={message} setMessage={setMessage}/>
+        <div className="col-span-2 bg-[#f6f6f6] rounded-[12px] p-[16px]">
+          <ChatSession message={message} setMessage={setMessage} />
         </div>
       </div>
     </div>
