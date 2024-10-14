@@ -1,41 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Button from "shared/Button";
+import { IMessage } from "..";
 
-type IMessage = {
-  id: number;
-  text: string;
-  sender: string;
-  timestamp: string;
+type Props = {
+  message: IMessage[];
+  setMessage: React.Dispatch<React.SetStateAction<IMessage[]>>;
 };
 
-const ChatSession = () => {
-  const initialMessages = () => {
-    const savedMessages = localStorage.getItem("messages");
-    return savedMessages
-      ? JSON.parse(savedMessages)
-      : [
-          {
-            id: 1,
-            text: "Hello",
-            sender: "David Peters",
-            timestamp: new Date().toLocaleTimeString(),
-          },
-          {
-            id: 2,
-            text: "Hi",
-            sender: "Lisa Roy",
-            timestamp: new Date().toLocaleTimeString(),
-          },
-        ];
-  };
+const ChatSession = ({ message, setMessage }: Props) => {
   const [value, setValue] = useState("");
-  const [message, setMessage] = useState<IMessage[]>(initialMessages);
-  const [lastSender, setLastSender] = useState<string>("David Peters");
 
-  useEffect(() => {
-    localStorage.setItem("messages", JSON.stringify(message));
-  }, [message]);
+  const [lastSender, setLastSender] = useState<string>("David Peters");
 
   const getNextSender = () => {
     return lastSender === "David Peters" ? "Lisa Roy" : "David Peters";
@@ -64,7 +40,6 @@ const ChatSession = () => {
     }
   };
 
- 
   return (
     <div className="p-[40px] flex flex-col justify-between h-screen font-[Inter]">
       <div>
@@ -75,7 +50,9 @@ const ChatSession = () => {
               alt="lisa"
               className="w-[45px] h-[45px] mr-2 rounded-full"
             />
-            <p className="text-[15px] leading-[18px] font-[600] text-[#2e2e2e]">Lisa Roy</p>
+            <p className="text-[15px] leading-[18px] font-[600] text-[#2e2e2e]">
+              Lisa Roy
+            </p>
           </div>
 
           <div className="flex gap-4">
@@ -136,7 +113,7 @@ const ChatSession = () => {
             <input
               type="text"
               placeholder="Write something..."
-              className="bg-transparent outline-none relative"
+              className="bg-transparent outline-none relative flex flex-grow"
               onChange={(e) => setValue(e.target.value)}
               value={value}
               onKeyDown={handleKeyDown}

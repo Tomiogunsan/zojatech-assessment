@@ -1,10 +1,12 @@
 import MessageCard from "shared/MessageCard";
 import Search from "shared/Search";
+import { IMessage } from "..";
 
-const SideBar = () => {
+import { formatTime } from "helpers/date";
+
+const SideBar = ({ message }: { message: IMessage[] }) => {
   return (
     <div className="grid gap-y-[26px]">
-      
       <MessageCard
         name="David Peters"
         avatar="/david.png"
@@ -16,20 +18,14 @@ const SideBar = () => {
       <MessageCard
         name="Lisa Roy"
         avatar="/lisa.png"
-        role="Hi, are you Available Tomorrow?"
-        time="10:35 AM"
-      />
-      <MessageCard
-        name="Jamie Taylor"
-        avatar="/jamie.png"
-        role="Nice One. Will Do it tommorow"
-        time="10:35 AM"
-      />
-      <MessageCard
-        name="Amy Frost"
-        role="Hi, will you start working on the chat app right now?"
-        time="10:35 AM"
-        avatar="/amy.png"
+        role={
+          message.filter((item) => item.sender === "Lisa Roy").pop()
+            ?.text as string
+        }
+        time={formatTime(
+          message.filter((item) => item.sender === "Lisa Roy").pop()
+            ?.timestamp as string
+        )}
       />
     </div>
   );
